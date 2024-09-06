@@ -1,0 +1,333 @@
+html:
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groot Pesquisa - O Banco Devs!</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link para o arquivo de estilo CSS -->
+</head>
+
+<body>
+    <!-- Camada de sobreposição com gradiente -->
+    <div class="overlay"></div>
+
+    <!-- Cabeçalho com menu de navegação -->
+    <header class="header-background">
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Contato</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main>
+        <div class="search-container">
+            <div class="search-bar">
+                <input type="text" placeholder="Pesquise aqui..."> <!-- Campo de entrada para pesquisa -->
+                <button type="submit">Pesquisar</button> <!-- Botão para iniciar a pesquisa -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Mensagem de aviso sobre o uso do Groot -->
+    <div id="groot-notification" class="notification">
+        <button id="close-notification" class="close-btn">&times;</button>
+        <div class="notification-content">
+            <h2>⚠️ Atenção!</h2>
+            <p>O Groot está sendo utilizado neste projeto apenas para fins não comerciais. Todos os direitos reservados aos criadores originais.</p>
+        </div>
+    </div>
+
+    <!-- Espaço para empurrar o rodapé para o fundo -->
+    <div class="push"></div>
+
+    <!-- Rodapé -->
+    <footer class="footer-background">
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2011 - 2024 | Desenvolvido por <a href="https://www.instagram.com/djjadsonreis" title="Veja minha jornada de desenvolvedor no Instagram" class="footer-link">Jadson Reis</a> do <a href="https://www.instagram.com/grupojadson" title="Visite o Grupo Jadson no Instagram" class="footer-link">Grupo Jadson</a> | Feito no Brasil, com incentivo de desafios da <a href="https://www.alura.com.br" title="Aprenda a programar com a Alura!" class="footer-link">Alura</a> 🤍.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script> <!-- Link para o arquivo de script JavaScript -->
+</body>
+</html>
+
+css:
+/* Importa a fonte Chakra Petch do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+/* Estilos Gerais */
+body {
+    font-family: 'Chakra Petch', sans-serif;
+    background-image: url('/img/background-jadson.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #431e6c;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #eb32f0, #431e6c, #172779);
+    opacity: 0.7;
+    z-index: -1;
+}
+
+/* Cabeçalho */
+.header-background {
+    background: linear-gradient(135deg, #29d7e0, #431e6c, #e933f0);
+    padding: 20px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-bottom: 3px solid #eb32f0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+
+nav li {
+    position: relative;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding: 10px 15px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: relative;
+}
+
+nav a:hover {
+    color: #eb32f0;
+    transform: scale(1.1);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #eb32f0;
+    left: 0;
+    bottom: -5px;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+nav a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Conteúdo Principal */
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-bar input {
+    padding: 12px 24px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.search-bar input:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(235, 50, 240, 0.4);
+}
+
+.search-bar button {
+    padding: 12px 24px;
+    background-color: #eb32f0;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #431e6c;
+    box-shadow: 0 5px 15px rgba(235, 50, 240, 0.4);
+}
+
+/* Mensagem de Aviso */
+.notification {
+    position: fixed;
+    top: 50%;
+    right: 20px; /* Distância da borda direita */
+    transform: translateY(-50%);
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    animation: fadeIn 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 300px;
+    border-left: 8px solid #eb32f0;
+    box-sizing: border-box; /* Garantir que padding e border são incluídos nas dimensões totais */
+}
+
+.notification h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #eb32f0;
+    text-align: center;
+}
+
+.notification p {
+    margin: 10px 0 0;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #f1f1f1;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+    align-self: flex-end;
+    margin: -10px -10px 10px 0; /* Ajuste para alinhamento com o topo e borda direita */
+}
+
+.close-btn:hover {
+    color: #eb32f0;
+    transform: rotate(90deg);
+}
+
+.notification-content {
+    width: 100%; /* Garantir que o conteúdo ocupe toda a largura disponível */
+    text-align: center; /* Garantir que o texto esteja centralizado */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Rodapé */
+.footer-background {
+    background: linear-gradient(135deg, #29d7e0, #431e6c, #e933f0);
+    padding: 20px 30px;
+    color: #ffffff;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+    border-top: 3px solid #eb32f0;
+    position: relative;
+}
+
+.footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+}
+
+.footer-link:hover {
+    color: #eb32f0;
+}
+
+.footer-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #eb32f0;
+    transition: width 0.3s ease;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+.footer-link:hover::after {
+    width: 100%;
+}
+
+/* Empurrador do Rodapé */
+.push {
+    flex: 1;
+}
+
+js:
+// script.js
+
+// Função para fechar a notificação
+document.getElementById('close-notification').addEventListener('click', function() {
+    document.getElementById('groot-notification').style.display = 'none';
+});
+
+// Função para iniciar a pesquisa ao pressionar Enter
+document.querySelector('.search-bar input').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        alert('A funcionalidade de pesquisa ainda está em desenvolvimento.');
+    }
+});
