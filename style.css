@@ -285,6 +285,7 @@ main {
     width: 80%;
     max-width: 500px;
     position: relative;
+    text-align: center;
 }
 
 .close {
