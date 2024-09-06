@@ -222,26 +222,46 @@ main {
 /* Rodapé */
 .footer-background {
     background: linear-gradient(135deg, #29d7e0, #431e6c, #e933f0);
-    padding: 20px;
-    text-align: center;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    margin-top: auto; /* Move o rodapé para a parte inferior */
-    z-index: 100;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+    border-top: 3px solid #eb32f0;
 }
 
 .footer-content {
+    text-align: center;
     color: #ffffff;
-    font-size: 0.9rem;
 }
 
 .footer-link {
-    color: #eb32f0;
+    color: #ffffff; /* Cor branca para os links no rodapé */
     text-decoration: none;
-    font-weight: 600;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.footer-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #eb32f0; /* Cor do sublinhado */
+    transition: width 0.3s;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+}
+
+.footer-link:hover::after,
+.footer-link:focus::after {
+    width: 100%;
 }
 
 .footer-link:hover {
-    text-decoration: underline;
+    color: #ffffff; /* A cor do texto permanece branca */
 }
 
 /* Popup */
