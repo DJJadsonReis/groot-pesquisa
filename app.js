@@ -1,24 +1,39 @@
-// script.js
-document.addEventListener('DOMContentLoaded', function() {
-    const notification = document.getElementById('groot-notification');
-    const closeButton = document.getElementById('close-notification');
+// Seleciona os elementos necessários
+const searchButton = document.getElementById('search-button');
+const searchInput = document.querySelector('.pesquisar-bar input');
+const searchMessage = document.querySelector('.pesquisar-message');
+const popup = document.getElementById('popup');
+const closePopup = document.getElementById('close-popup');
 
-    // Função para mostrar a notificação
-    function showNotification() {
-        notification.style.display = 'flex';
+// Função para mostrar o popup
+function showPopup() {
+    popup.style.display = 'flex';
+}
+
+// Função para ocultar o popup
+function hidePopup() {
+    popup.style.display = 'none';
+}
+
+// Adiciona evento de clique no botão de pesquisa
+searchButton.addEventListener('click', () => {
+    const searchValue = searchInput.value.trim();
+    if (searchValue === '') {
+        searchMessage.textContent = 'Por favor, digite um termo de pesquisa.';
+    } else {
+        searchMessage.textContent = `Você pesquisou por: ${searchValue}`;
     }
+});
 
-    // Função para fechar a notificação
-    function closeNotification() {
-        notification.style.display = 'none';
+// Adiciona evento para fechar o popup
+closePopup.addEventListener('click', hidePopup);
+
+// Exibe o popup após 5 segundos (ajuste conforme necessário)
+setTimeout(showPopup, 20);
+
+// Adiciona evento para buscar ao pressionar a tecla Enter
+searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        searchButton.click();
     }
-
-    // Adiciona um evento ao botão de fechar
-    closeButton.addEventListener('click', closeNotification);
-
-    // Exibe a notificação quando a página carrega
-    showNotification();
-
-    // Implementa o fechamento automático após 10 segundos
-    setTimeout(closeNotification, 10000);
 });

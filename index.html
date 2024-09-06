@@ -4,57 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Groot Pesquisa - O Banco Devs!</title>
-    <link rel="stylesheet" href="style.css"> <!-- Link para o arquivo de estilo CSS -->
+    <link rel="stylesheet" href="style.css"> <!-- Link para o arquivo CSS -->
 </head>
-
 <body>
-    <!-- Camada de sobreposição com gradiente -->
-    <div class="overlay"></div>
+    <!-- Container para a imagem de fundo e sobreposição -->
+    <div class="background-container">
+        <div class="background-image"></div>
+        <div class="overlay"></div>
+    </div>
 
-    <!-- Cabeçalho com menu de navegação -->
+    <!-- Cabeçalho -->
     <header class="header-background">
-        <div class="container">
-            <nav>
-                <ul>
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#">Contato</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
-            </nav>
-        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Contato</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+        </nav>
     </header>
 
     <!-- Conteúdo principal -->
     <main>
-        <div class="search-container">
-            <div class="search-bar">
-                <input type="text" placeholder="Pesquise aqui..."> <!-- Campo de entrada para pesquisa -->
-                <button type="submit">Pesquisar</button> <!-- Botão para iniciar a pesquisa -->
+        <div class="pesquisar-container">
+            <img src="/img/logo-groot.png" alt="Logo Groot" class="logo-groot">
+            <div class="pesquisar-bar">
+                <input type="text" placeholder="Digite sua pesquisa...">
+                <button id="search-button">
+                    <img src="/img/pesquisar-groot2.png" alt="Buscar">
+                </button>
             </div>
+            <div class="pesquisar-message"></div>
         </div>
+
+        <!-- Seção de Artigos -->
+        <section class="artigos">
+            <h2>Artigos sobre Programação</h2>
+            <div class="artigos-container">
+                <article class="artigo">
+                    <h3>Introdução ao JavaScript</h3>
+                    <p>O JavaScript é uma linguagem de programação essencial para o desenvolvimento web. Neste artigo, vamos explorar suas principais características e como começar a programar com ela.</p>
+                    <a href="#" class="read-more">Leia mais</a>
+                </article>
+                <article class="artigo">
+                    <h3>Fundamentos de CSS</h3>
+                    <p>CSS é responsável pelo design e estilo das páginas web. Descubra como utilizar CSS para criar layouts responsivos e estilizar seus sites de maneira eficaz.</p>
+                    <a href="#" class="read-more">Leia mais</a>
+                </article>
+                <article class="artigo">
+                    <h3>O que é HTML?</h3>
+                    <p>HTML é a estrutura básica de qualquer página web. Este artigo cobre os conceitos fundamentais do HTML e como ele é usado para criar páginas web.</p>
+                    <a href="#" class="read-more">Leia mais</a>
+                </article>
+            </div>
+        </section>
     </main>
-
-    <!-- Mensagem de aviso sobre o uso do Groot -->
-    <div id="groot-notification" class="notification">
-        <button id="close-notification" class="close-btn">&times;</button>
-        <div class="notification-content">
-            <h2>⚠️ Atenção!</h2>
-            <p>O Groot está sendo utilizado neste projeto apenas para fins não comerciais. Todos os direitos reservados aos criadores originais.</p>
-        </div>
-    </div>
-
-    <!-- Espaço para empurrar o rodapé para o fundo -->
-    <div class="push"></div>
 
     <!-- Rodapé -->
     <footer class="footer-background">
-        <div class="container">
-            <div class="footer-content">
-                <p>© 2011 - 2024 | Desenvolvido por <a href="https://www.instagram.com/djjadsonreis" title="Veja minha jornada de desenvolvedor no Instagram" class="footer-link">Jadson Reis</a> do <a href="https://www.instagram.com/grupojadson" title="Visite o Grupo Jadson no Instagram" class="footer-link">Grupo Jadson</a> | Feito no Brasil, com incentivo de desafios da <a href="https://www.alura.com.br" title="Aprenda a programar com a Alura!" class="footer-link">Alura</a> 🤍.</p>
-            </div>
+        <div class="footer-content">
+            <p>© 2024 | Desenvolvido por <a href="https://www.instagram.com/djjadsonreis" title="Veja minha jornada de desenvolvedor no Instagram" class="footer-link"><strong>Jadson Reis</strong></a> do <a href="https://www.instagram.com/grupojadson" title="Visite o Grupo Jadson no Instagram" class="footer-link"><strong>Grupo Jadson</strong></a> | Feito no Brasil, com incentivo de desafios da <a href="https://www.alura.com.br" title="Aprenda a programar com a Alura!" class="footer-link"><strong>Alura</strong></a> 🤍.</p>
         </div>
     </footer>
 
-    <script src="app.js"></script> <!-- Link para o arquivo de script JavaScript -->
+    <!-- Popup de aviso -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <span class="close" id="close-popup">&times;</span>
+            <p>Este site utiliza a imagem e o nome do <strong>Groot</strong> apenas para fins de estudo e demonstração. Todos os direitos sobre o personagem <strong>Groot</strong> são da <strong>Marvel</strong>.</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script> <!-- Link para o arquivo JavaScript -->
 </body>
 </html>
