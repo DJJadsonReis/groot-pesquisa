@@ -26,7 +26,7 @@ O Groot Pesquisa é um site amigável que simula uma plataforma de pesquisa para
 
 ### 💻  Como Explorar o Projeto
 
-1. **Acesse a Demonstração:** [Visitar o GrooT Pesquisa](https://groot-pesquisa.vercel.app/)
+1. **Acesse a Demonstração:** [GrooT Pesquisa](https://groot-pesquisa.vercel.app/)
 
 2. **Explore a Interface:** Navegue pelos artigos, use a barra de pesquisa e visualize os pop-ups com os conteúdo.
 
