@@ -38,7 +38,7 @@ O Groot Pesquisa é um site amigável que simula uma plataforma de pesquisa para
 
 ### 🤝  Contribuições
 
-Se você quiser contribuir para o projeto, sinta-se à vontade para enviar um pull request. 
+- Se você quiser contribuir para o projeto, sinta-se à vontade para enviar um pull request. 
 
 ### 📝  Observações
 
