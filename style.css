@@ -144,6 +144,20 @@ main {
 .logo-groot {
     max-width: 200px; /* Ajuste o tamanho da imagem conforme necessário */
     margin-bottom: 20px; /* Espaçamento entre a imagem e a barra de pesquisa */
+    /* Adicione um efeito de animação para a logo */
+    animation: logoAnimation 3s ease-in-out infinite; 
+}
+
+@keyframes logoAnimation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 .pesquisar-bar {
@@ -213,6 +227,11 @@ main {
     transition: transform 0.3s ease;
     position: relative; /* Para posicionar a imagem */
     overflow: hidden; /* Para o efeito hover da imagem */
+    border: 3px solid transparent; /* Remove a borda sólida */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona sombra suave */
+    display: flex; /* Define o display como flex para o artigo */
+    flex-direction: column; /* Organiza os elementos em uma coluna */
+    height: fit-content;
 }
 
 .artigo:hover {
@@ -224,31 +243,36 @@ main {
     color: #e933f0; /* Cor do título do artigo */
     font-size: 1.4rem;
     margin-bottom: 10px;
+    font-weight: bold; /* Adiciona negrito ao título */
 }
 
-.artigo p {
+.artigo-descricao { /* Nova classe para a descrição do artigo */
     font-size: 1rem;
     color: #666666;
     line-height: 1.5; /* Aumenta o espaço entre linhas */
+    margin-bottom: 15px; /* Adiciona margem inferior à descrição */
 }
 
-.read-more {
-    color: #e933f0;
+/* Estilos para o botão "Leia Mais" */
+.leia-mais {
+    color: #ffffff; /* Cor do texto do botão */
     text-decoration: none;
     font-weight: 600;
-    transition: color 0.3s ease; /* Transição suave da cor no hover */
-    display: block; /* Torna o link um bloco para ocupar toda a largura */
-    padding: 10px 0; /* Adiciona padding para o botão */
-    text-align: center; /* Centraliza o texto do botão */
+    display: none; /* Torna o link um bloco para ocupar toda a largura */
+    padding: 12px 20px; /* Adiciona padding para o botão */
     cursor: pointer;
     background-color: #eb32f0; /* Cor de fundo do botão */
     border-radius: 5px; /* Borda arredondada */
     border: none; /* Remove a borda do botão */
+    opacity: 0; /* O botão começa invisível */
+    transition: 0.3s ease; /* Transição de opacidade no hover */
+    width: fit-content; /* Define a largura do botão para o conteúdo */
+    margin: 0 auto;
 }
 
-.read-more:hover {
-    color: #ffffff; /* Cor do texto no hover */
-    background-color: #e933f0; /* Cor de fundo do botão no hover */
+.artigo:hover .leia-mais {
+    display: block;
+    opacity: 1; /* O botão fica visível no hover */
 }
 
 .artigo-imagem {
@@ -258,6 +282,7 @@ main {
     display: block; /* Impede o espaço extra abaixo da imagem */
     transition: transform 0.5s ease; /* Transição para o efeito hover */
     object-fit: cover; /* Ajuste a imagem para cobrir todo o espaço */
+    border-radius: 8px; /* Adiciona cantos arredondados à imagem */
 }
 
 .artigo:hover .artigo-imagem {
@@ -320,7 +345,7 @@ main {
     background: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-items: center;
-    z-index: 200;
+    z-index: 201; /* Aumente o z-index do popup para ficar acima da logo */
 }
 
 .popup-content {
@@ -334,7 +359,7 @@ main {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra ao popup */
 }
 
-.close {
+.fechar {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -344,7 +369,7 @@ main {
     transition: color 0.3s ease; /* Transição da cor no hover */
 }
 
-.close:hover {
+.fechar:hover {
     color: #e933f0; /* Cor do botão de fechar no hover */
 }
 
