@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Função para abrir o popup
     function openPopup() {
-        document.getElementById('popup').style.display = 'flex';
+        document.getElementById('aviso_groot').style.display = 'flex';
     }
 
     // Função para fechar o popup
     function closePopup() {
-        document.getElementById('popup').style.display = 'none';
+        document.getElementById('aviso_groot').style.display = 'none';
     }
 
     // Exibir o popup após 5 segundos
@@ -36,4 +36,25 @@ document.addEventListener('DOMContentLoaded', function () {
             searchMessage.textContent = 'Digite algo para pesquisar!';
         }
     }
+
+    // Abrir o popup do artigo
+    const readMoreButtons = document.querySelectorAll('.read-more');
+    const articlePopup = document.getElementById('article-popup');
+    const articleContent = document.getElementById('article-content');
+    const closeArticlePopup = document.getElementById('close-article-popup');
+
+    readMoreButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const content = button.dataset.content;
+            const title = button.dataset.title;
+
+            articleContent.innerHTML = content;
+            articleContent.querySelector('h3').textContent = title;
+            articlePopup.style.display = 'flex';
+        });
+    });
+
+    closeArticlePopup.addEventListener('click', () => {
+        articlePopup.style.display = 'none';
+    });
 });

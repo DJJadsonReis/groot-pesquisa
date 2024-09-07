@@ -1,13 +1,14 @@
 /* Estilos Gerais */
 body {
     font-family: 'Chakra Petch', sans-serif;
-    color: #431e6c;
+    color: #431e6c; /* Cor principal do texto */
     margin: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
+    background: #f2f2f2; /* Cor de fundo da página */
 }
 
 /* Imagem de Fundo e Sobreposição */
@@ -32,6 +33,7 @@ body {
     top: 0;
     left: 0;
     z-index: 1; /* Imagem atrás da sobreposição */
+    filter: blur(5px); /* Adiciona um efeito blur na imagem de fundo */
 }
 
 .overlay {
@@ -48,6 +50,19 @@ body {
     );
     opacity: 0.6; /* Opacidade da sobreposição */
     z-index: 2; /* Sobreposição acima da imagem de fundo */
+    animation: gradientAnimation 5s linear infinite; /* Animação do gradiente */
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* Cabeçalho */
@@ -196,14 +211,17 @@ main {
     padding: 20px;
     width: 300px; /* Ajuste o tamanho do artigo conforme necessário */
     transition: transform 0.3s ease;
+    position: relative; /* Para posicionar a imagem */
+    overflow: hidden; /* Para o efeito hover da imagem */
 }
 
 .artigo:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Aumenta a sombra no hover */
 }
 
-.artigo h3 {
-    color: #431e6c;
+.artigo-titulo {
+    color: #e933f0; /* Cor do título do artigo */
     font-size: 1.4rem;
     margin-bottom: 10px;
 }
@@ -211,12 +229,38 @@ main {
 .artigo p {
     font-size: 1rem;
     color: #666666;
+    line-height: 1.5; /* Aumenta o espaço entre linhas */
 }
 
 .read-more {
     color: #e933f0;
     text-decoration: none;
     font-weight: 600;
+    transition: color 0.3s ease; /* Transição suave da cor no hover */
+    display: block; /* Torna o link um bloco para ocupar toda a largura */
+    padding: 10px 0; /* Adiciona padding para o botão */
+    text-align: center; /* Centraliza o texto do botão */
+    cursor: pointer;
+    background-color: #e933f0; /* Cor de fundo do botão */
+    border-radius: 5px; /* Borda arredondada */
+}
+
+.read-more:hover {
+    color: #ffffff; /* Cor do texto no hover */
+    background-color: #eb32f0; /* Cor de fundo do botão no hover */
+}
+
+.artigo-imagem {
+    max-width: 100%; /* Ajusta a largura da imagem para caber no artigo */
+    height: auto; /* Ajusta a altura automaticamente para manter a proporção */
+    margin-bottom: 10px; /* Adiciona espaçamento abaixo da imagem */
+    display: block; /* Impede o espaço extra abaixo da imagem */
+    transition: transform 0.5s ease; /* Transição para o efeito hover */
+    object-fit: cover; /* Ajuste a imagem para cobrir todo o espaço */
+}
+
+.artigo:hover .artigo-imagem {
+    transform: scale(1.1); /* Aumenta o tamanho da imagem no hover */
 }
 
 /* Rodapé */
@@ -286,6 +330,7 @@ main {
     max-width: 500px;
     position: relative;
     text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra ao popup */
 }
 
 .close {
@@ -294,6 +339,12 @@ main {
     right: 10px;
     font-size: 1.5rem;
     cursor: pointer;
+    color: #431e6c; /* Cor do botão de fechar */
+    transition: color 0.3s ease; /* Transição da cor no hover */
+}
+
+.close:hover {
+    color: #e933f0; /* Cor do botão de fechar no hover */
 }
 
 /* Responsividade */
@@ -314,5 +365,10 @@ main {
     .artigo {
         width: 100%;
         max-width: 400px;
+    }
+
+    .artigo-imagem {
+        width: 100%; /* Ajuste a largura da imagem para 100% */
+        height: auto; /* Manter a altura proporcional */
     }
 }

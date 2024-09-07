@@ -39,22 +39,37 @@
 
         <!-- Seção de Artigos -->
         <section class="artigos">
-            <h2>Artigos sobre Programação</h2>
+            <h2>Primeiros passos na Programação Dev &lt;/ &gt;</h2>
             <div class="artigos-container">
                 <article class="artigo">
-                    <h3>Introdução ao JavaScript</h3>
-                    <p>O JavaScript é uma linguagem de programação essencial para o desenvolvimento web. Neste artigo, vamos explorar suas principais características e como começar a programar com ela.</p>
-                    <a href="#" class="read-more">Leia mais</a>
+                    <img src="/img/javascript.jpg" alt="Imagem de JavaScript" class="artigo-imagem">
+                    <h3 class="artigo-titulo">Introdução ao JavaScript</h3>
+                    <p>Aprenda os fundamentos da linguagem JavaScript, essencial para o desenvolvimento web. Descubra como usar JavaScript para criar interatividade em suas páginas web.</p>
+                    <a href="#" class="read-more" data-content="
+                        <h3>Introdução ao JavaScript</h3>
+                        <p>Aprenda os fundamentos da linguagem JavaScript, essencial para o desenvolvimento web. Descubra como usar JavaScript para criar interatividade em suas páginas web. Este é um exemplo de conteúdo expandido. Você pode adicionar mais informações aqui, como exemplos de código, links para recursos adicionais ou qualquer outra coisa que você achar relevante.</p>
+                        <p>Lembre-se de que este é apenas um exemplo e você pode personalizar o conteúdo para cada artigo. Use este espaço para fornecer informações adicionais, explicações detalhadas ou exemplos práticos que ajudarão os leitores a entender melhor o tópico.</p>
+                    " data-title="Conteúdo Completo">Leia mais</a>
                 </article>
                 <article class="artigo">
-                    <h3>Fundamentos de CSS</h3>
-                    <p>CSS é responsável pelo design e estilo das páginas web. Descubra como utilizar CSS para criar layouts responsivos e estilizar seus sites de maneira eficaz.</p>
-                    <a href="#" class="read-more">Leia mais</a>
+                    <img src="/img/css.jpg" alt="Imagem de CSS" class="artigo-imagem">
+                    <h3 class="artigo-titulo">Fundamentos de CSS</h3>
+                    <p>Domine as técnicas de estilo com CSS para criar designs atraentes e responsivos para seus sites. Aprenda a usar CSS para controlar o layout, as cores, as fontes e muito mais.</p>
+                    <a href="#" class="read-more" data-content="
+                        <h3>Fundamentos de CSS</h3>
+                        <p>Domine as técnicas de estilo com CSS para criar designs atraentes e responsivos para seus sites. Aprenda a usar CSS para controlar o layout, as cores, as fontes e muito mais. Este é um exemplo de conteúdo expandido. Você pode adicionar mais informações aqui, como exemplos de código, links para recursos adicionais ou qualquer outra coisa que você achar relevante.</p>
+                        <p>Lembre-se de que este é apenas um exemplo e você pode personalizar o conteúdo para cada artigo. Use este espaço para fornecer informações adicionais, explicações detalhadas ou exemplos práticos que ajudarão os leitores a entender melhor o tópico.</p>
+                    " data-title="Conteúdo Completo">Leia mais</a>
                 </article>
                 <article class="artigo">
-                    <h3>O que é HTML?</h3>
-                    <p>HTML é a estrutura básica de qualquer página web. Este artigo cobre os conceitos fundamentais do HTML e como ele é usado para criar páginas web.</p>
-                    <a href="#" class="read-more">Leia mais</a>
+                    <img src="/img/html.jpg" alt="Imagem de HTML" class="artigo-imagem">
+                    <h3 class="artigo-titulo">O que é HTML?</h3>
+                    <p>Entenda os princípios básicos da linguagem HTML, a base de todas as páginas web. Descubra como usar HTML para estruturar o conteúdo de um site e criar elementos como títulos, parágrafos, imagens e links.</p>
+                    <a href="#" class="read-more" data-content="
+                        <h3>O que é HTML?</h3>
+                        <p>Entenda os princípios básicos da linguagem HTML, a base de todas as páginas web. Descubra como usar HTML para estruturar o conteúdo de um site e criar elementos como títulos, parágrafos, imagens e links. Este é um exemplo de conteúdo expandido. Você pode adicionar mais informações aqui, como exemplos de código, links para recursos adicionais ou qualquer outra coisa que você achar relevante.</p>
+                        <p>Lembre-se de que este é apenas um exemplo e você pode personalizar o conteúdo para cada artigo. Use este espaço para fornecer informações adicionais, explicações detalhadas ou exemplos práticos que ajudarão os leitores a entender melhor o tópico.</p>
+                    " data-title="Conteúdo Completo">Leia mais</a>
                 </article>
             </div>
         </section>
@@ -63,15 +78,23 @@
     <!-- Rodapé -->
     <footer class="footer-background">
         <div class="footer-content">
-            <p>© 2024 | Desenvolvido por <a href="https://www.instagram.com/djjadsonreis" title="Veja minha jornada de desenvolvedor no Instagram" class="footer-link"><strong>Jadson Reis</strong></a> do <a href="https://www.instagram.com/grupojadson" title="Visite o Grupo Jadson no Instagram" class="footer-link"><strong>Grupo Jadson</strong></a> | Feito no <strong>Brasil</strong> 🤍.</p>
+            <p>© 2024・<a href="#" title="Ínicio da Groot Pesquisa" class="footer-link"><strong>Groot Pesquisa</strong></a> | Desenvolvido por <a href="https://www.instagram.com/djjadsonreis" title="Veja minha jornada de desenvolvedor no Instagram" class="footer-link"><strong>Jadson Reis</strong></a> do <a href="https://www.instagram.com/grupojadson" title="Visite o Grupo Jadson no Instagram" class="footer-link"><strong>Grupo Jadson</strong></a> 🤍</p>
         </div>
     </footer>
 
     <!-- Popup de aviso -->
-    <div class="popup" id="popup">
+    <div class="popup" id="aviso_groot">
         <div class="popup-content">
-            <span class="close" id="close-popup">&times;</span>
+            <span class="close" id="close-popup">×</span>
             <p>Este site utiliza a imagem e o nome do <strong>Groot</strong> apenas para fins de estudo. Todos os direitos sobre o personagem <strong>Groot</strong> são da <strong>Marvel</strong>.</p>
+        </div>
+    </div>
+
+    <!-- Popup para o conteúdo do artigo -->
+    <div class="popup" id="article-popup">
+        <div class="popup-content">
+            <span class="close" id="close-article-popup">×</span>
+            <div id="article-content"></div>
         </div>
     </div>
 
