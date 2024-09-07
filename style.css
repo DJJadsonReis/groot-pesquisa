@@ -241,13 +241,14 @@ main {
     padding: 10px 0; /* Adiciona padding para o botão */
     text-align: center; /* Centraliza o texto do botão */
     cursor: pointer;
-    background-color: #e933f0; /* Cor de fundo do botão */
+    background-color: #eb32f0; /* Cor de fundo do botão */
     border-radius: 5px; /* Borda arredondada */
+    border: none; /* Remove a borda do botão */
 }
 
 .read-more:hover {
     color: #ffffff; /* Cor do texto no hover */
-    background-color: #eb32f0; /* Cor de fundo do botão no hover */
+    background-color: #e933f0; /* Cor de fundo do botão no hover */
 }
 
 .artigo-imagem {
@@ -345,6 +346,31 @@ main {
 
 .close:hover {
     color: #e933f0; /* Cor do botão de fechar no hover */
+}
+
+/* Estilo para o conteúdo do artigo no popup */
+.popup-artigo-content {
+    padding: 20px; /* Adiciona padding ao conteúdo do artigo */
+}
+
+.popup-artigo-content h3 {
+    color: #431e6c; /* Cor do título do artigo no popup */
+    font-size: 1.6rem; /* Tamanho da fonte do título no popup */
+    margin-bottom: 15px; /* Espaçamento abaixo do título */
+}
+
+.popup-artigo-content p {
+    font-size: 1rem; /* Tamanho da fonte do parágrafo no popup */
+    color: #666666; /* Cor do parágrafo no popup */
+    line-height: 1.6; /* Espaçamento entre as linhas do parágrafo */
+}
+
+.popup-artigo-imagem {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+    display: block;
+    object-fit: cover;
 }
 
 /* Responsividade */
