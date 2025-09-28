@@ -1,105 +1,100 @@
+# Groot Pesquisa - Guia de Estilo e Sistema de Design v2.0
 
-# Groot Pesquisa - Guia de Estilo
+## 1. Princípios de Design
 
-Este documento descreve o sistema de design para o projeto Groot Pesquisa. Ele fornece um conjunto de padrões para tipografia, cor, espaçamento e componentes para garantir uma interface de usuário consistente e acessível.
+Este guia de estilo define a identidade visual e os componentes da interface do usuário para o "Groot Pesquisa". Nosso design é construído sobre dois princípios principais: **Claridade** e **Profundidade**.
 
-## 1. Paleta de Cores
+- **Claridade:** A interface deve ser intuitiva e legível, mesmo com a complexidade visual do fundo.
+- **Profundidade:** Utilizamos camadas, desfoque e sombras para criar uma hierarquia visual clara, dando ao usuário uma sensação de espaço e contexto.
 
-A paleta de cores foi projetada para clareza e acessibilidade (compatível com WCAG AA). Inclui cores primárias, neutras e semânticas, cada uma com uma escala de 9 tons.
+### Efeito Principal: Glassmorphism (Vidro Fosco)
 
-### Cores Primárias (Roxo)
+O *Glassmorphism* é o pilar do nosso design. Ele é aplicado a superfícies de interface como cabeçalhos, pop-ups e cartões para criar um efeito de "vidro fosco" sobre um fundo dinâmico e desfocado. Isso cria uma sensação de profundidade e modernidade.
 
-Usadas para elementos interativos e ações principais.
-
-- **Primary 100:** `#EAE2F8`
-- **Primary 200:** `#D5C5F1`
-- **Primary 300:** `#C0A7EB`
-- **Primary 400:** `#AC8AE4`
-- **Primary 500:** `#976CEE`
-- **Primary 600:** `#7A4EDA` (Base)
-- **Primary 700:** `#5F39B6`
-- **Primary 800:** `#472A8C`
-- **Primary 900:** `#301C62`
-
-### Cores Neutras (Cinza)
-
-Usadas para texto, fundos e bordas.
-
-- **Neutral 100:** `#F8F9FA` (Cinza Mais Claro)
-- **Neutral 200:** `#E9ECEF`
-- **Neutral 300:** `#DEE2E6`
-- **Neutral 400:** `#CED4DA`
-- **Neutral 500:** `#ADB5BD`
-- **Neutral 600:** `#6C757D` (Base)
-- **Neutral 700:** `#495057`
-- **Neutral 800:** `#343A40`
-- **Neutral 900:** `#212529` (Cinza Mais Escuro / Texto)
-
-### Cores Semânticas
-
-Usadas para transmitir status ou informação.
-
-- **Sucesso:** `#28A745`
-- **Aviso:** `#FFC107`
-- **Erro:** `#DC3545`
+- **Implementação:** Usamos a propriedade `backdrop-filter: blur(Xpx);` juntamente com um `background-color` semi-transparente.
 
 ---
 
-## 2. Tipografia
+## 2. Tokens de Design
 
-A escala tipográfica é baseada em uma proporção de `1.25` e usa a família de fontes `Chakra Petch`.
+Tokens são as variáveis CSS que mantêm nosso sistema consistente. Eles são a base para cores, espaçamento, sombras e muito mais.
 
-- **Tamanho da Fonte Base:** `16px`
+### Paleta de Cores (Modo Escuro)
 
-| Elemento | Tamanho da Fonte (px/rem) | Peso da Fonte | Altura da Linha | Espaçamento entre Letras |
-|---|---|---|---|---|
-| Título 1 | `37px / 2.31rem` | 700 (Negrito) | 1.2 | -0.02em |
-| Título 2 | `30px / 1.88rem` | 700 (Negrito) | 1.2 | -0.02em |
-| Título 3 | `24px / 1.5rem` | 600 (Seminegrito) | 1.2 | -0.02em |
-| Corpo | `16px / 1rem` | 400 (Regular) | 1.5 | 0 |
-| UI/Botão | `15px / 0.94rem` | 600 (Seminegrito) | 1.4 | 0 |
-| Texto Pequeno | `12px / 0.75rem` | 400 (Regular) | 1.4 | +0.05em |
+Nossa paleta é otimizada para um ambiente escuro, garantindo legibilidade e apelo visual.
+
+#### Cores Primárias (Roxo)
+Usadas para ações principais, links e indicadores de foco.
+
+- `var(--primary-400)`: `#AC8AE4` (Para indicadores de foco e hover)
+- `var(--primary-600)`: `#7A4EDA` (Cor base para botões e links)
+
+#### Cores Neutras (Tons de Cinza e Branco)
+Usadas para texto, fundos de superfície e bordas.
+
+- `var(--neutral-100)`: `#F8F9FA` (Texto de alto contraste)
+- `var(--neutral-300)`: `#DEE2E6` (Texto de médio contraste, descrições)
+- `var(--neutral-900)`: `#212529` (Cor base para fundos escuros de texto)
+
+### Tipografia
+
+A fonte principal é a `Chakra Petch`. A escala é projetada para legibilidade em fundos escuros.
+
+- **Título Principal (h2):** `1.88rem`, negrito (`700`), com `text-shadow` para se destacar do fundo.
+- **Título do Cartão (h3):** `1.5rem`, seminegrito (`600`), cor `var(--primary-100)`.
+- **Corpo do Texto:** `1rem`, regular (`400`), cor `var(--neutral-300)`.
+
+### Sistema de Elevação (Sombras)
+
+Usamos sombras para simular a elevação dos elementos em relação ao fundo. Quanto maior a elevação, mais difusa e ampla é a sombra.
+
+- `var(--shadow-md)`: **Elevação Baixa.** Usado para componentes estáticos como cartões.
+- `var(--shadow-lg)`: **Elevação Média.** Usado em estados de `hover` para indicar interatividade.
+- `var(--shadow-xl)`: **Elevação Alta.** Reservado para elementos que flutuam acima de todo o resto, como a barra de pesquisa e pop-ups.
+
+### Espaçamento
+
+Nosso sistema de espaçamento é baseado em uma escala de `8px` para garantir ritmo e consistência.
+
+- `var(--space-1)`: `8px`
+- `var(--space-2)`: `16px`
+- `var(--space-3)`: `24px`
+- ... e assim por diante.
 
 ---
 
-## 3. Espaçamento e Dimensionamento
+## 3. Biblioteca de Componentes
 
-Um sistema de grade consistente de 8px é usado para todas as margens, preenchimentos e espaçamento de layout. A unidade base é `8px`.
+Esta seção detalha os principais componentes da interface e como eles devem ser utilizados.
 
-- **`--space-1`:** `8px`
-- **`--space-2`:** `16px`
-- **`--space-3`:** `24px`
-- **`--space-4`:** `32px`
-- **`--space-5`:** `48px`
-- **`--space-6`:** `64px`
+### Cabeçalho (`.header-background`)
+
+- **Descrição:** Uma barra fixa no topo da página com navegação principal.
+- **Efeito:** *Glassmorphism* com desfoque de `12px` e um fundo translúcido (`rgba(30, 25, 45, 0.5)`).
+- **Borda:** Uma borda inferior sutil (`1px solid rgba(255, 255, 255, 0.08)`) para separá-lo do conteúdo.
+
+### Barra de Pesquisa (`.pesquisar-bar`)
+
+- **Descrição:** O principal ponto de interação para o usuário.
+- **Efeito:** *Glassmorphism* com desfoque de `12px` e um fundo de vidro claro (`rgba(255, 255, 255, 0.1)`).
+- **Elevação:** Usa `--shadow-xl` para parecer flutuar sobre a página, atraindo o foco.
+
+### Cartão de Artigo (`.artigo`)
+
+- **Descrição:** Exibe uma prévia de um artigo.
+- **Efeito:** Um sutil *Glassmorphism* com desfoque de `5px` e um fundo escuro translúcido.
+- **Interação:** Ao passar o mouse (`:hover`), sua elevação aumenta para `--shadow-lg` e uma borda de destaque (`--primary-600`) aparece, indicando que é clicável.
+
+### Pop-up (`.popup` e `.popup-content`)
+
+- **Descrição:** Uma janela modal para exibir conteúdo detalhado (como um artigo) ou notificações.
+- **Efeito:** O fundo do pop-up (`.popup`) usa um desfoque de `10px` em toda a página para focar a atenção do usuário. O contêiner de conteúdo (`.popup-content`) tem um efeito de vidro mais intenso com desfoque de `15px`.
+- **Elevação:** Usa `--shadow-xl` para se destacar como a camada superior da interface.
 
 ---
 
-## 4. Componentes
+## 4. Animações e Micro-interações
 
-Estilos padronizados para componentes comuns da interface do usuário.
-
-### Raio da Borda
-
-- **`--radius-sm`:** `4px` (para entradas, botões pequenos)
-- **`--radius-md`:** `8px` (para cartões, pop-ups)
-- **`--radius-lg`:** `16px` (para contêineres maiores)
-- **`--radius-full`:** `9999px` (para elementos em forma de pílula)
-
-### Sombras
-
-- **`--shadow-sm`:** `0 2px 4px rgba(0,0,0,0.05)`
-- **`--shadow-md`:** `0 4px 8px rgba(0,0,0,0.1)`
-- **`--shadow-lg`:** `0 10px 20px rgba(0,0,0,0.15)`
-
-### Botões
-
-- **Altura:** `40px`
-- **Preenchimento:** `0 16px`
-- **Estados:** Estilos para `hover`, `active`, `focus` são definidos para feedback claro ao usuário.
-
-### Cartões
-
-- **Preenchimento:** `24px`
-- **Borda:** `1px solid var(--neutral-300)`
-- **Sombra:** `var(--shadow-md)`
+- **Transições:** Todas as interações (`hover`, `focus`) usam uma transição suave de `0.2s`, definida em `var(--transition-speed)`.
+- **Animação de Carregamento (Skeleton):** Usa uma animação de brilho (`shimmer`) em placeholders que imitam a estrutura do conteúdo real. Isso melhora a percepção de performance durante o carregamento.
+- **Feedback de Ação:** Botões têm um efeito de `scale(0.95)` no estado `:active` para fornecer feedback tátil imediato ao clique.

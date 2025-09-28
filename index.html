@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Groot Pesquisa - O Banco Devs!</title>
-    <link rel="stylesheet" href="style.css"> 
-    <script src="app.js" defer></script> 
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
 </head>
 <body>
 
@@ -19,8 +19,8 @@
     </div>
 
     <!-- Cabeçalho -->
-    <header class="header-background">
-        <nav>
+    <header class="header-background" role="banner">
+        <nav role="navigation" aria-label="Navegação principal">
             <ul>
                 <li><a href="#">Início</a></li>
                 <li><a href="#">Contato</a></li>
@@ -30,80 +30,52 @@
     </header>
 
     <!-- Conteúdo principal -->
-    <main>
-        <div class="pesquisar-container">
+    <main role="main">
+        <div class="pesquisar-container" role="search">
             <img src="/img/logo-groot.png" alt="Logo Groot" class="logo-groot">
             <div class="pesquisar-bar">
-                <label for="search-input" class="sr-only">Pesquisar</label>
+                <label for="search-input" class="sr-only">Pesquisar por linguagem ou tópico</label>
                 <input type="text" id="search-input" placeholder="Digite uma linguagem developer...">
                 <button id="search-button" aria-label="Buscar">
-                    <img src="/img/pesquisar-groot2.png" alt="Buscar">
+                    <img src="/img/pesquisar-groot2.png" alt="">
                 </button>
             </div>
-            <div class="pesquisar-message"></div>
+            <div class="pesquisar-message" aria-live="polite"></div>
         </div>
 
         <!-- Seção de Artigos -->
         <section class="artigos" aria-labelledby="section-heading">
             <h2 id="section-heading">Primeiros passos na Programação Dev &lt;/ &gt;</h2>
+            <!-- O conteúdo dos artigos será carregado dinamicamente aqui pelo app.js -->
             <div class="artigos-container">
-                <article class="artigo">
-                    <img src="/img/javascript.jpg" alt="Imagem de JavaScript" class="artigo-imagem">
-                    <h3 class="artigo-titulo">Introdução ao JavaScript</h3>
-                    <p class="artigo-descricao">Aprenda os fundamentos da linguagem JavaScript, essencial para o desenvolvimento web.</p>
-                    <a href="#" class="leia-mais" data-content="
-                        <div class='popup-artigo-content'>
-                            <p>JavaScript é uma linguagem de programação interpretada, frequentemente utilizada para adicionar interatividade a páginas da web. Essa linguagem é essencial para criar animações, efeitos visuais, validações de formulários, jogos e muito mais. É uma das tecnologias mais importantes para o desenvolvimento web moderno. </p>
-                            <p>No curso a seguir você aprenderá desde os conceitos básicos da linguagem, como variáveis, tipos de dados, operadores e estruturas de controle, até o uso de bibliotecas populares como jQuery e frameworks como React e Angular. </p>
-                            <p>Aprenda JavaScript do zero e comece a construir páginas web interativas e dinâmicas e de forma gratuita.</p>
-                        </div>" data-title="Introdução ao JavaScript">Leia mais</a>
-                </article>
-                <article class="artigo">
-                    <img src="/img/style-css.jpg" alt="Imagem de CSS" class="artigo-imagem">
-                    <h3 class="artigo-titulo">Fundamentos de CSS</h3>
-                    <p class="artigo-descricao">Domine as técnicas de estilo com CSS para criar designs atraentes e responsivos para seus sites.</p>
-                    <a href="#" class="leia-mais" data-content="
-                        <div class='popup-artigo-content'>
-                            <p>CSS (Cascading Style Sheets) é uma linguagem de estilo utilizada para definir a aparência de páginas web. Com o CSS, você pode controlar a forma, a cor, o tamanho, o posicionamento, a fonte e muitos outros aspectos visuais dos seus elementos web.</p>
-                            <p>No curso a seguir você aprenderá os conceitos básicos de CSS, como seletores, propriedades e valores, além de explorar técnicas avançadas como layouts responsivos, animações, transições e muito mais. </p>
-                            <p>Aprenda CSS e transforme seus projetos web em sites visualmente atraentes e adaptáveis para diferentes dispositivos e de forma gratuita.</p>
-                        </div>" data-title="Fundamentos de CSS">Leia mais</a>
-                </article>
-                <article class="artigo">
-                    <img src="/img/html.jpg" alt="Imagem de HTML" class="artigo-imagem">
-                    <h3 class="artigo-titulo">O que é HTML?</h3>
-                    <p class="artigo-descricao">Entenda os princípios básicos da linguagem HTML, a base de todas as páginas web.</p>
-                    <a href="#" class="leia-mais" data-content="
-                        <div class='popup-artigo-content'>
-                            <p>HTML (HyperText Markup Language) é a linguagem de marcação utilizada para criar a estrutura básica de páginas da web. É como a base de um edifício, definindo a organização e o conteúdo de cada página.</p>
-                            <p>No curso a seguir você aprenderá a construir páginas web básicas com HTML, aprendendo a criar elementos como títulos, parágrafos, listas, tabelas, imagens, links e muito mais. </p>
-                            <p>Aprenda HTML e dê o primeiro passo para se tornar um desenvolvedor web, construindo páginas web que funcionam perfeitamente e de forma gratuita.</p>
-                        </div>" data-title="O que é HTML?">Leia mais</a>
-                </article>
+                <!-- Skeleton loader ou os artigos aparecerão aqui -->
             </div>
         </section>
     </main>
 
     <!-- Rodapé -->
-    <footer class="footer-background">
+    <footer class="footer-background" role="contentinfo">
         <div class="footer-content">
-            <p>© 2024・<a href="#" title="Ínicio da Groot Pesquisa" class="footer-link"><strong>Groot Pesquisa</strong></a> | Desenvolvido por <a href="https://www.instagram.com/djjadsonreis" title="Veja minha jornada de desenvolvedor no Instagram" class="footer-link"><strong>Jadson Reis</strong></a> do <a href="https://www.instagram.com/grupojadson" title="Visite o Grupo Jadson no Instagram" class="footer-link"><strong>Grupo Jadson</strong></a> 🤍</p>
+             <p>© 2024・<a href="#" title="Ínicio da Groot Pesquisa" class="footer-link"><strong>Groot Pesquisa</strong></a> | Desenvolvido por <a href="https://www.instagram.com/djjadsonreis" title="Veja minha jornada de desenvolvedor no Instagram" class="footer-link"><strong>Jadson Reis</strong></a> do <a href="https://www.instagram.com/grupojadson" title="Visite o Grupo Jadson no Instagram" class="footer-link"><strong>Grupo Jadson</strong></a> 🤍</p>
         </div>
     </footer>
 
     <!-- Popup de aviso -->
-    <div class="popup" id="aviso_groot">
+    <div class="popup" id="aviso_groot" role="alertdialog" aria-labelledby="aviso-titulo" aria-describedby="aviso-descricao">
         <div class="popup-content">
-            <span class="fechar" id="fechar-popup" role="button" aria-label="Fechar">×</span>
-            <p>Este site utiliza a imagem e o nome do <strong>Groot</strong> apenas para fins de estudo. Todos os direitos sobre o personagem <strong>Groot</strong> são da <strong>Marvel</strong>.</p>
+            <h3 id="aviso-titulo" class="sr-only">Aviso Legal</h3>
+            <p id="aviso-descricao">Este site utiliza a imagem e o nome do <strong>Groot</strong> apenas para fins de estudo. Todos os direitos sobre o personagem <strong>Groot</strong> são da <strong>Marvel</strong>.</p>
+            <button class="fechar" id="fechar-popup" role="button" aria-label="Fechar">×</button>
         </div>
     </div>
 
     <!-- Popup para o conteúdo do artigo -->
-    <div class="popup" id="artigo-popup">
+    <div class="popup" id="artigo-popup" role="dialog" aria-modal="true" aria-labelledby="artigo-titulo-popup">
         <div class="popup-content">
-            <span class="fechar" id="fechar-artigo-popup" role="button" aria-label="Fechar">×</span>
-            <div id="artigo-content"></div>
+            <div id="artigo-content">
+                <!-- O conteúdo do artigo será injetado aqui -->
+            </div>
+            <button class="fechar" id="fechar-artigo-popup" role="button" aria-label="Fechar">×</button>
         </div>
     </div>
 
