@@ -13,7 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const allArticles = [
         {
-            img: '/img/javascript.jpg',
+            tech: 'js',
+            techName: 'JavaScript',
+            icon: '/img/icon-js.svg',
             title: 'Introdução ao JavaScript',
             description: 'Aprenda os fundamentos da linguagem JavaScript, essencial para o desenvolvimento web.',
             content: `
@@ -23,7 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
             `
         },
         {
-            img: '/img/style-css.jpg',
+            tech: 'css',
+            techName: 'CSS',
+            icon: '/img/icon-css.svg',
             title: 'Fundamentos de CSS',
             description: 'Domine as técnicas de estilo com CSS para criar designs atraentes e responsivos para seus sites.',
             content: `
@@ -33,7 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
             `
         },
         {
-            img: '/img/html.jpg',
+            tech: 'html',
+            techName: 'HTML',
+            icon: '/img/icon-html.svg',
             title: 'O que é HTML?',
             description: 'Entenda os princípios básicos da linguagem HTML, a base de todas as páginas web.',
             content: `
@@ -53,11 +59,13 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < 3; i++) {
             const skeletonArticle = `
                 <article class="artigo">
-                    <div class="artigo-imagem skeleton"></div>
-                    <h3 class="artigo-titulo skeleton skeleton-text"></h3>
-                    <p class="artigo-descricao skeleton skeleton-text"></p>
-                    <p class="artigo-descricao skeleton skeleton-text"></p>
-                    <div class="leia-mais skeleton" style="width: 100px; height: 38px;"></div>
+                    <div class="artigo-header skeleton" style="height: 120px; border-bottom: none;"></div>
+                    <div class="artigo-conteudo">
+                        <h3 class="artigo-titulo skeleton skeleton-text" style="width: 80%;"></h3>
+                        <p class="artigo-descricao skeleton skeleton-text"></p>
+                        <p class="artigo-descricao skeleton skeleton-text" style="width: 90%;"></p>
+                        <div class="leia-mais skeleton" style="width: 100px; height: 38px; margin-top: 16px;"></div>
+                    </div>
                 </article>
             `;
             articlesContainer.innerHTML += skeletonArticle;
@@ -75,10 +83,15 @@ document.addEventListener('DOMContentLoaded', () => {
         articlesToRender.forEach(article => {
             const articleElement = `
                 <article class="artigo">
-                    <img src="${article.img}" alt="Imagem de ${article.title}" class="artigo-imagem">
-                    <h3 class="artigo-titulo">${article.title}</h3>
-                    <p class="artigo-descricao">${article.description}</p>
-                    <a href="#" class="leia-mais" role="button" data-title="${article.title}">Leia mais</a>
+                    <header class="artigo-header ${article.tech}">
+                        <img src="${article.icon}" alt="Ícone de ${article.techName}" class="artigo-header-icon ${article.tech}-icon">
+                        <h4 class="artigo-header-title">${article.techName}</h4>
+                    </header>
+                    <div class="artigo-conteudo">
+                        <h3 class="artigo-titulo">${article.title}</h3>
+                        <p class="artigo-descricao">${article.description}</p>
+                        <a href="#" class="leia-mais" role="button" data-title="${article.title}">Leia mais</a>
+                    </div>
                 </article>
             `;
             articlesContainer.innerHTML += articleElement;
@@ -88,35 +101,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ====================================================================
-    //  3. FUNCIONALIDADES DE INTERAÇÃO
+    //  3. FUNCIONALIDADES DE INTERAÇÃO (sem alterações)
     // ====================================================================
 
     function initSearch() {
         const handleSearch = () => {
             const query = searchInput.value.toLowerCase().trim();
             searchMessage.textContent = query ? `Resultados para: "${searchInput.value}"` : '';
-
-            const filteredArticles = allArticles.filter(article => {
-                const title = article.title.toLowerCase();
-                const description = article.description.toLowerCase();
-                return title.includes(query) || description.includes(query);
-            });
-
+            const filteredArticles = allArticles.filter(a => a.title.toLowerCase().includes(query) || a.description.toLowerCase().includes(query));
             renderArticles(filteredArticles);
         };
-
-        searchInput.addEventListener('input', () => {
-            clearTimeout(debounceTimer);
-            debounceTimer = setTimeout(handleSearch, 300);
-        });
-
+        searchInput.addEventListener('input', () => { clearTimeout(debounceTimer); debounceTimer = setTimeout(handleSearch, 300); });
         searchButton.addEventListener('click', handleSearch);
-
-        searchInput.addEventListener('keypress', (event) => {
-            if (event.key === 'Enter') {
-                handleSearch();
-            }
-        });
+        searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSearch(); });
     }
 
     function initPopups() {
@@ -126,7 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => warningPopup.style.display = 'flex', 500);
             closeWarningPopup.addEventListener('click', () => warningPopup.style.display = 'none');
         }
-
         initArticlePopup();
     }
 
@@ -141,14 +137,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault();
                 const title = button.dataset.title;
                 const articleData = allArticles.find(art => art.title === title);
-
                 if (articleData) {
-                    const popupHTML = `
-                        <div class="popup-artigo-content">
-                            <h3 id="artigo-titulo-popup">${articleData.title}</h3>
-                            ${articleData.content}
-                        </div>
-                    `;
+                    const popupHTML = `<div class="popup-artigo-content"><h3>${articleData.title}</h3>${articleData.content}</div>`;
                     articleContent.innerHTML = popupHTML;
                     articlePopup.style.display = 'flex';
                 }
@@ -156,9 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if(closeArticlePopup) {
-            closeArticlePopup.addEventListener('click', () => {
-                articlePopup.style.display = 'none';
-            });
+            closeArticlePopup.addEventListener('click', () => { articlePopup.style.display = 'none'; });
         }
     }
 
