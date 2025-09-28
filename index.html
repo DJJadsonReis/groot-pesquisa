@@ -31,8 +31,9 @@
         <div class="pesquisar-container">
             <img src="/img/logo-groot.png" alt="Logo Groot" class="logo-groot">
             <div class="pesquisar-bar">
-                <input type="text" placeholder="Digite uma linguagem developer...">
-                <button id="search-button">
+                <label for="search-input" class="sr-only">Pesquisar</label>
+                <input type="text" id="search-input" placeholder="Digite uma linguagem developer...">
+                <button id="search-button" aria-label="Buscar">
                     <img src="/img/pesquisar-groot2.png" alt="Buscar">
                 </button>
             </div>
@@ -90,7 +91,7 @@
     <!-- Popup de aviso -->
     <div class="popup" id="aviso_groot">
         <div class="popup-content">
-            <span class="fechar" id="fechar-popup">×</span>
+            <span class="fechar" id="fechar-popup" role="button" aria-label="Fechar">×</span>
             <p>Este site utiliza a imagem e o nome do <strong>Groot</strong> apenas para fins de estudo. Todos os direitos sobre o personagem <strong>Groot</strong> são da <strong>Marvel</strong>.</p>
         </div>
     </div>
@@ -98,7 +99,7 @@
     <!-- Popup para o conteúdo do artigo -->
     <div class="popup" id="artigo-popup">
         <div class="popup-content">
-            <span class="fechar" id="fechar-artigo-popup">×</span>
+            <span class="fechar" id="fechar-artigo-popup" role="button" aria-label="Fechar">×</span>
             <div id="artigo-content"></div>
         </div>
     </div>
