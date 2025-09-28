@@ -1,80 +1,105 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Função para abrir o popup de aviso
-    function openPopup() {
-        document.getElementById('aviso_groot').style.display = 'flex';
-    }
+    // Inicializa o popup de aviso
+    function initWarningPopup() {
+        const warningPopup = document.getElementById('aviso_groot');
+        const closeButton = document.getElementById('fechar-popup');
 
-    // Função para fechar o popup de aviso
-    function closePopup() {
-        document.getElementById('aviso_groot').style.display = 'none';
-    }
-
-    // Exibe o popup de aviso após 5 segundos
-    setTimeout(openPopup, 20);
-
-    // Adiciona evento de clique para fechar o popup de aviso
-    document.getElementById('fechar-popup').addEventListener('click', closePopup);
-
-    // Implementa a busca ao pressionar Enter ou clicar no botão
-    const inputField = document.querySelector('.pesquisar-bar input');
-    const searchButton = document.getElementById('search-button');
-    const searchMessage = document.querySelector('.pesquisar-message');
-
-    inputField.addEventListener('keypress', function (event) {
-        if (event.key === 'Enter') {
-            search();
+        function openPopup() {
+            warningPopup.style.display = 'flex';
         }
-    });
 
-    searchButton.addEventListener('click', search);
-
-    // Função para realizar a busca
-    function search() {
-        const query = inputField.value;
-        if (query) {
-            searchMessage.textContent = `Resultados para: ${query}`;
-        } else {
-            searchMessage.textContent = 'Digite algo para pesquisar!';
+        function closePopup() {
+            warningPopup.style.display = 'none';
         }
+
+        setTimeout(openPopup, 20);
+        closeButton.addEventListener('click', closePopup);
     }
 
-    // Abre o popup do artigo
-    const readMoreButtons = document.querySelectorAll('.leia-mais');
-    const articlePopup = document.getElementById('artigo-popup');
-    const articleContent = document.getElementById('artigo-content');
-    const closeArticlePopup = document.getElementById('fechar-artigo-popup');
+    // Inicializa o popup de artigos
+    function initArticlePopup() {
+        const readMoreButtons = document.querySelectorAll('.leia-mais');
+        const articlePopup = document.getElementById('artigo-popup');
+        const articleContent = document.getElementById('artigo-content');
+        const closeArticlePopup = document.getElementById('fechar-artigo-popup');
 
-    readMoreButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const content = button.dataset.content;
-            const title = button.dataset.title;
+        readMoreButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.dataset.content;
+                const title = button.dataset.title;
 
-            // Cria um novo elemento div para o conteúdo do popup
-            const popupContent = document.createElement('div');
-            popupContent.classList.add('popup-artigo-content');
-            
-            // Cria um novo elemento h3 para o título
-            const popupTitle = document.createElement('h3');
-            popupTitle.textContent = title;
+                const popupContent = document.createElement('div');
+                popupContent.classList.add('popup-artigo-content');
 
-            // Remove o título do conteúdo do popup
-            let cleanedContent = content.replace(/<h3>(.*?)<\/h3>/g, ''); 
+                const popupTitle = document.createElement('h3');
+                popupTitle.textContent = title;
 
-            // Adiciona o conteúdo do popup ao novo elemento div
-            popupContent.appendChild(popupTitle);
-            // Use innerHTML para inserir o conteúdo HTML
-            popupContent.innerHTML += cleanedContent; 
+                let cleanedContent = content.replace(/<h3>(.*?)<\/h3>/g, '');
 
-            // Adiciona o novo elemento div ao popup
-            articleContent.innerHTML = ''; // Limpa o conteúdo anterior
-            articleContent.appendChild(popupContent);
+                popupContent.appendChild(popupTitle);
+                popupContent.innerHTML += cleanedContent;
 
-            articlePopup.style.display = 'flex';
+                articleContent.innerHTML = '';
+                articleContent.appendChild(popupContent);
+
+                articlePopup.style.display = 'flex';
+            });
         });
-    });
 
-    // Fecha o popup do artigo
-    closeArticlePopup.addEventListener('click', () => {
-        articlePopup.style.display = 'none';
-    });
+        closeArticlePopup.addEventListener('click', () => {
+            articlePopup.style.display = 'none';
+        });
+    }
+
+    // Inicializa a funcionalidade de busca
+    function initSearch() {
+        const inputField = document.querySelector('.pesquisar-bar input');
+        const searchButton = document.getElementById('search-button');
+        const searchMessage = document.querySelector('.pesquisar-message');
+        const articles = document.querySelectorAll('.artigo');
+
+        function search() {
+            const query = inputField.value.toLowerCase();
+            let hasResults = false;
+
+            articles.forEach(article => {
+                const title = article.querySelector('.artigo-titulo').textContent.toLowerCase();
+                const description = article.querySelector('.artigo-descricao').textContent.toLowerCase();
+
+                if (title.includes(query) || description.includes(query)) {
+                    article.style.display = 'block';
+                    hasResults = true;
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+
+            if (hasResults) {
+                searchMessage.textContent = `Resultados para: ${inputField.value}`;
+            } else {
+                searchMessage.textContent = 'Nenhum resultado encontrado.';
+            }
+
+            if (!inputField.value) {
+                searchMessage.textContent = '';
+                articles.forEach(article => {
+                    article.style.display = 'block';
+                });
+            }
+        }
+
+        inputField.addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+                search();
+            }
+        });
+
+        inputField.addEventListener('input', search); // Real-time search
+        searchButton.addEventListener('click', search);
+    }
+
+    // Inicializa todas as funcionalidades
+    initWarningPopup();
+    initArticlePopup();
+    initSearch();
 });

@@ -1,14 +1,30 @@
+:root {
+    --primary-color-1: #e933f0;
+    --primary-color-2: #431e6c;
+    --primary-color-3: #29d7e0;
+    --text-color: #431e6c;
+    --background-color: #f2f2f2;
+    --white-color: #ffffff;
+    --gray-color: #666666;
+    --z-index-background: -1;
+    --z-index-image: 1;
+    --z-index-overlay: 2;
+    --z-index-main: 3;
+    --z-index-header: 100;
+    --z-index-popup: 201;
+}
+
 /* Estilos Gerais */
 body {
     font-family: 'Chakra Petch', sans-serif;
-    color: #431e6c; /* Cor principal do texto */
+    color: var(--text-color);
     margin: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
-    background: #f2f2f2; /* Cor de fundo da página */
+    background: var(--background-color);
 }
 
 /* Imagem de Fundo e Sobreposição */
@@ -18,7 +34,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Fundo atrás de outros elementos */
+    z-index: var(--z-index-background);
     overflow: hidden;
 }
 
@@ -29,11 +45,11 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    position: absolute; /* Fixar a imagem dentro do contêiner */
+    position: absolute;
     top: 0;
     left: 0;
-    z-index: 1; /* Imagem atrás da sobreposição */
-    filter: blur(5px); /* Adiciona um efeito blur na imagem de fundo */
+    z-index: var(--z-index-image);
+    filter: blur(5px);
 }
 
 .overlay {
@@ -42,32 +58,21 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        135deg,
-        #e933f0, /* Cor principal 1 */
-        #431e6c, /* Cor principal 2 */
-        #29d7e0  /* Cor principal 3 */
-    );
-    opacity: 0.6; /* Opacidade da sobreposição */
-    z-index: 2; /* Sobreposição acima da imagem de fundo */
-    animation: gradientAnimation 5s linear infinite; /* Animação do gradiente */
+    background: linear-gradient(135deg, var(--primary-color-1), var(--primary-color-2), var(--primary-color-3));
+    opacity: 0.6;
+    z-index: var(--z-index-overlay);
+    animation: gradientAnimation 5s linear infinite;
 }
 
 @keyframes gradientAnimation {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* Cabeçalho */
 .header-background {
-    background: linear-gradient(135deg, #29d7e0, #431e6c, #e933f0);
+    background: linear-gradient(135deg, var(--primary-color-3), var(--primary-color-2), var(--primary-color-1));
     padding: 20px 30px;
     display: flex;
     justify-content: center;
@@ -75,9 +80,9 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 100; /* Acima de outros elementos, como o conteúdo principal */
+    z-index: var(--z-index-header);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    border-bottom: 3px solid #eb32f0;
+    border-bottom: 3px solid var(--primary-color-1);
 }
 
 header nav ul {
@@ -89,7 +94,7 @@ header nav ul {
 }
 
 header nav a {
-    color: #ffffff; /* Cor branca para os links */
+    color: var(--white-color);
     text-decoration: none;
     font-weight: 600;
     font-size: 1.2rem;
@@ -103,21 +108,15 @@ header nav a::after {
     display: block;
     width: 0;
     height: 2px;
-    background: #eb32f0; /* Cor do sublinhado */
+    background: var(--primary-color-1);
     transition: width 0.3s;
     position: absolute;
     bottom: -2px;
     left: 0;
 }
 
-header nav a:hover::after,
-header nav a:focus::after {
-    width: 100%;
-}
-
-header nav a:hover {
-    color: #ffffff; /* A cor do texto permanece branca */
-}
+header nav a:hover::after, header nav a:focus::after { width: 100%; }
+header nav a:hover { color: var(--white-color); }
 
 /* Conteúdo Principal */
 main {
@@ -128,8 +127,8 @@ main {
     flex: 1;
     padding: 60px 20px;
     text-align: center;
-    position: relative; /* Para o posicionamento da sobreposição e popup */
-    z-index: 3; /* Garantir que o conteúdo esteja acima da sobreposição */
+    position: relative;
+    z-index: var(--z-index-main);
 }
 
 .pesquisar-container {
@@ -137,34 +136,27 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 100px; /* Ajuste a margem conforme necessário */
+    margin-top: 100px;
     position: relative;
 }
 
 .logo-groot {
-    max-width: 200px; /* Ajuste o tamanho da imagem conforme necessário */
-    margin-bottom: 20px; /* Espaçamento entre a imagem e a barra de pesquisa */
-    /* Adicione um efeito de animação para a logo */
-    animation: logoAnimation 3s ease-in-out infinite; 
+    max-width: 200px;
+    margin-bottom: 20px;
+    animation: logoAnimation 3s ease-in-out infinite;
 }
 
 @keyframes logoAnimation {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
 
 .pesquisar-bar {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: white;
+    background: var(--white-color);
     border-radius: 50px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 5px 15px;
@@ -190,124 +182,109 @@ main {
     cursor: pointer;
 }
 
-.pesquisar-bar img {
-    width: 40px; /* Ajuste o tamanho do ícone conforme necessário */
-}
-
+.pesquisar-bar img { width: 40px; }
 .pesquisar-message {
     margin-top: 20px;
     font-size: 1.1rem;
-    color: #ffffff;
+    color: var(--white-color);
 }
 
 /* Seção de Artigos */
-.artigos {
-    margin-top: 40px;
-}
-
+.artigos { margin-top: 40px; }
 .artigos h2 {
-    color: #ffffff;
+    color: var(--white-color);
     font-size: 2rem;
     margin-bottom: 20px;
 }
 
 .artigos-container {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
-    justify-content: center;
 }
 
 .artigo {
-    background: #ffffff;
+    background: var(--white-color);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 300px; /* Ajuste o tamanho do artigo conforme necessário */
+    width: 300px;
     transition: transform 0.3s ease;
-    position: relative; /* Para posicionar a imagem */
-    overflow: hidden; /* Para o efeito hover da imagem */
-    border: 3px solid transparent; /* Remove a borda sólida */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona sombra suave */
-    display: flex; /* Define o display como flex para o artigo */
-    flex-direction: column; /* Organiza os elementos em uma coluna */
+    position: relative;
+    overflow: hidden;
+    border: 3px solid transparent;
+    display: flex;
+    flex-direction: column;
     height: fit-content;
 }
 
 .artigo:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Aumenta a sombra no hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .artigo-titulo {
-    color: #e933f0; /* Cor do título do artigo */
+    color: var(--primary-color-1);
     font-size: 1.4rem;
     margin-bottom: 10px;
-    font-weight: bold; /* Adiciona negrito ao título */
+    font-weight: bold;
 }
 
-.artigo-descricao { /* Nova classe para a descrição do artigo */
+.artigo-descricao {
     font-size: 1rem;
-    color: #666666;
-    line-height: 1.5; /* Aumenta o espaço entre linhas */
-    margin-bottom: 15px; /* Adiciona margem inferior à descrição */
+    color: var(--gray-color);
+    line-height: 1.5;
+    margin-bottom: 15px;
 }
 
-/* Estilos para o botão "Leia Mais" */
 .leia-mais {
-    color: #ffffff; /* Cor do texto do botão */
+    color: var(--white-color);
     text-decoration: none;
     font-weight: 600;
-    display: none; /* Torna o link um bloco para ocupar toda a largura */
-    padding: 12px 20px; /* Adiciona padding para o botão */
+    display: none;
+    padding: 12px 20px;
     cursor: pointer;
-    background-color: #eb32f0; /* Cor de fundo do botão */
-    border-radius: 5px; /* Borda arredondada */
-    border: none; /* Remove a borda do botão */
-    opacity: 0; /* O botão começa invisível */
-    transition: 0.3s ease; /* Transição de opacidade no hover */
-    width: fit-content; /* Define a largura do botão para o conteúdo */
+    background-color: var(--primary-color-1);
+    border-radius: 5px;
+    border: none;
+    opacity: 0;
+    transition: 0.3s ease;
+    width: fit-content;
     margin: 0 auto;
 }
 
 .artigo:hover .leia-mais {
     display: block;
-    opacity: 1; /* O botão fica visível no hover */
+    opacity: 1;
 }
 
 .artigo-imagem {
-    max-width: 100%; /* Ajusta a largura da imagem para caber no artigo */
-    height: auto; /* Ajusta a altura automaticamente para manter a proporção */
-    margin-bottom: 10px; /* Adiciona espaçamento abaixo da imagem */
-    display: block; /* Impede o espaço extra abaixo da imagem */
-    transition: transform 0.5s ease; /* Transição para o efeito hover */
-    object-fit: cover; /* Ajuste a imagem para cobrir todo o espaço */
-    border-radius: 8px; /* Adiciona cantos arredondados à imagem */
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    display: block;
+    transition: transform 0.5s ease;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
-.artigo:hover .artigo-imagem {
-    transform: scale(1.1); /* Aumenta o tamanho da imagem no hover */
-}
+.artigo:hover .artigo-imagem { transform: scale(1.1); }
 
 /* Rodapé */
 .footer-background {
-    background: linear-gradient(135deg, #29d7e0, #431e6c, #e933f0);
+    background: linear-gradient(135deg, var(--primary-color-3), var(--primary-color-2), var(--primary-color-1));
     padding: 20px 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
-    border-top: 3px solid #eb32f0;
+    border-top: 3px solid var(--primary-color-1);
 }
 
-.footer-content {
-    text-align: center;
-    color: #ffffff;
-}
-
+.footer-content { text-align: center; color: var(--white-color); }
 .footer-link {
-    color: #ffffff; /* Cor branca para os links no rodapé */
+    color: var(--white-color);
     text-decoration: none;
     position: relative;
     transition: color 0.3s ease;
@@ -318,21 +295,15 @@ main {
     display: block;
     width: 0;
     height: 2px;
-    background: #eb32f0; /* Cor do sublinhado */
+    background: var(--primary-color-1);
     transition: width 0.3s;
     position: absolute;
     bottom: -2px;
     left: 0;
 }
 
-.footer-link:hover::after,
-.footer-link:focus::after {
-    width: 100%;
-}
-
-.footer-link:hover {
-    color: #ffffff; /* A cor do texto permanece branca */
-}
+.footer-link:hover::after, .footer-link:focus::after { width: 100%; }
+.footer-link:hover { color: var(--white-color); }
 
 /* Popup */
 .popup {
@@ -345,18 +316,18 @@ main {
     background: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-items: center;
-    z-index: 201; /* Aumente o z-index do popup para ficar acima da logo */
+    z-index: var(--z-index-popup);
 }
 
 .popup-content {
-    background: white;
+    background: var(--white-color);
     border-radius: 8px;
     padding: 20px;
     width: 80%;
     max-width: 500px;
     position: relative;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra ao popup */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .fechar {
@@ -365,29 +336,23 @@ main {
     right: 10px;
     font-size: 1.5rem;
     cursor: pointer;
-    color: #431e6c; /* Cor do botão de fechar */
-    transition: color 0.3s ease; /* Transição da cor no hover */
+    color: var(--text-color);
+    transition: color 0.3s ease;
 }
 
-.fechar:hover {
-    color: #e933f0; /* Cor do botão de fechar no hover */
-}
+.fechar:hover { color: var(--primary-color-1); }
 
-/* Estilo para o conteúdo do artigo no popup */
-.popup-artigo-content {
-    padding: 20px; /* Adiciona padding ao conteúdo do artigo */
-}
-
+.popup-artigo-content { padding: 20px; }
 .popup-artigo-content h3 {
-    color: #431e6c; /* Cor do título do artigo no popup */
-    font-size: 1.6rem; /* Tamanho da fonte do título no popup */
-    margin-bottom: 15px; /* Espaçamento abaixo do título */
+    color: var(--text-color);
+    font-size: 1.6rem;
+    margin-bottom: 15px;
 }
 
 .popup-artigo-content p {
-    font-size: 1rem; /* Tamanho da fonte do parágrafo no popup */
-    color: #666666; /* Cor do parágrafo no popup */
-    line-height: 1.6; /* Espaçamento entre as linhas do parágrafo */
+    font-size: 1rem;
+    color: var(--gray-color);
+    line-height: 1.6;
 }
 
 .popup-artigo-imagem {
@@ -400,26 +365,9 @@ main {
 
 /* Responsividade */
 @media (max-width: 768px) {
-    .pesquisar-bar {
-        flex-direction: column;
-    }
-
-    .pesquisar-bar input {
-        width: 100%;
-    }
-
-    .artigos-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .artigo {
-        width: 100%;
-        max-width: 400px;
-    }
-
-    .artigo-imagem {
-        width: 100%; /* Ajuste a largura da imagem para 100% */
-        height: auto; /* Manter a altura proporcional */
-    }
+    .pesquisar-bar { flex-direction: column; }
+    .pesquisar-bar input { width: 100%; }
+    .artigos-container { grid-template-columns: 1fr; }
+    .artigo { width: 100%; max-width: 400px; }
+    .artigo-imagem { width: 100%; height: auto; }
 }
