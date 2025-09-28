@@ -409,5 +409,5 @@ main {
     .pesquisar-bar input { width: 100%; }
     .artigos-container { grid-template-columns: 1fr; }
     .artigo { width: 100%; max-width: 400px; }
-    .artigo-imagem { width: 100%; height: auto; }
+    .artigo-imagem { width: 100%; height: 200px; }
 }
