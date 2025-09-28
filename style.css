@@ -14,6 +14,24 @@
     --z-index-popup: 201;
 }
 
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes logoAnimation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
 /* Estilos Gerais */
 body {
     font-family: 'Chakra Petch', sans-serif;
@@ -25,6 +43,7 @@ body {
     position: relative;
     overflow-x: hidden;
     background: var(--background-color);
+    animation: fadeIn 1s ease-in-out;
 }
 
 /* Imagem de Fundo e Sobreposição */
@@ -64,12 +83,6 @@ body {
     animation: gradientAnimation 5s linear infinite;
 }
 
-@keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
 /* Cabeçalho */
 .header-background {
     background: linear-gradient(135deg, var(--primary-color-3), var(--primary-color-2), var(--primary-color-1));
@@ -100,7 +113,7 @@ header nav a {
     font-size: 1.2rem;
     padding: 10px 15px;
     position: relative;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
 header nav a::after {
@@ -117,6 +130,7 @@ header nav a::after {
 
 header nav a:hover::after, header nav a:focus::after { width: 100%; }
 header nav a:hover { color: var(--white-color); }
+header nav a:active { transform: scale(0.95); }
 
 /* Conteúdo Principal */
 main {
@@ -144,12 +158,6 @@ main {
     max-width: 200px;
     margin-bottom: 20px;
     animation: logoAnimation 3s ease-in-out infinite;
-}
-
-@keyframes logoAnimation {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
 }
 
 .pesquisar-bar {
@@ -180,9 +188,12 @@ main {
     background-color: transparent;
     border: none;
     cursor: pointer;
+    transition: transform 0.2s ease;
 }
 
+.pesquisar-bar button:active { transform: scale(0.9); }
 .pesquisar-bar img { width: 40px; }
+
 .pesquisar-message {
     margin-top: 20px;
     font-size: 1.1rem;
@@ -209,7 +220,7 @@ main {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     width: 300px;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
     border: 3px solid transparent;
@@ -248,7 +259,7 @@ main {
     border-radius: 5px;
     border: none;
     opacity: 0;
-    transition: 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.2s ease;
     width: fit-content;
     margin: 0 auto;
 }
@@ -256,6 +267,12 @@ main {
 .artigo:hover .leia-mais {
     display: block;
     opacity: 1;
+}
+
+.leia-mais:active { transform: scale(0.95); }
+.leia-mais:focus {
+    outline: 2px solid var(--primary-color-1);
+    outline-offset: 2px;
 }
 
 .artigo-imagem {
@@ -287,7 +304,7 @@ main {
     color: var(--white-color);
     text-decoration: none;
     position: relative;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .footer-link::after {
@@ -304,6 +321,11 @@ main {
 
 .footer-link:hover::after, .footer-link:focus::after { width: 100%; }
 .footer-link:hover { color: var(--white-color); }
+.footer-link:active { transform: scale(0.95); }
+.footer-link:focus {
+    outline: 2px solid var(--primary-color-1);
+    outline-offset: 2px;
+}
 
 /* Popup */
 .popup {
@@ -317,6 +339,7 @@ main {
     justify-content: center;
     align-items: center;
     z-index: var(--z-index-popup);
+    animation: fadeIn 0.3s ease-in-out;
 }
 
 .popup-content {
@@ -337,10 +360,15 @@ main {
     font-size: 1.5rem;
     cursor: pointer;
     color: var(--text-color);
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .fechar:hover { color: var(--primary-color-1); }
+.fechar:active { transform: scale(0.9); }
+.fechar:focus {
+    outline: 2px solid var(--primary-color-1);
+    outline-offset: 2px;
+}
 
 .popup-artigo-content { padding: 20px; }
 .popup-artigo-content h3 {
